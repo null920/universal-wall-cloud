@@ -1,0 +1,206 @@
+<!--pages/myPost/myPost.wxml-->
+<view class="mypost-container">
+  <view class="mypost-content" bindtouchend="hideCommentPanel">
+    <tab class="totop" tabList="{{ tabList }}" bindgetTabSelect="getTabSelect"></tab>
+    <block wx:if="{{ show }}">
+      <view wx:if="{{ tabSelect==0 }}" class="something">
+        <view wx:for="{{ list }}" class="something-item" wx:key="index" wx:for-item="item" wx:for-index="outerIndex">
+          <!--头像、昵称、身份-->
+          <view class="item-header">
+            <view class="avatar-item">
+              <image class="avatar-border" src="../../images/something/border.png" />
+              <image class="user-avatar" src="{{ item.avatarCloudUrl }}" />
+              <image wx:if="{{ item.gender==1 }}" class="gender" src="../../images/female.png" />
+              <image wx:if="{{ item.gender==0 }}" class="gender" src="../../images/male.png" />
+            </view>
+            <view class="nickname-item">
+              <view class="nickname-top">
+                <view class="poster-nickname">{{ item.nickName }}</view>
+                <image wx:if="{{ item.roleId }}" src="../../images/something/index-admin.png"></image>
+              </view>
+            </view>
+            <view class="icon-item">
+              <image data-id="{{ item._id }}" bindtap="deletePost" src="../../images/something/index-delete.png"></image>
+            </view>
+          </view>
+
+          <!--内容-->
+          <view class="item-content">
+            <view class="item-content-word">{{ item.textContent }}</view>
+            <view class="item-content-image" wx:if="{{ item.uploadImgList.length>=1 }}">
+              <!--aspectFill缩放模式，保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来。-->
+              <image data-id="{{ outerIndex }}" bindtap="previewImage" wx:key="index" wx:for="{{ item.uploadImgList }}" wx:for-item="innerItem" mode="aspectFill" src="{{ innerItem }}" data-index="{{ index }}"></image>
+            </view>
+          </view>
+
+          <!--时间、评论按钮-->
+          <view class="item-footer">
+            <view class="date">{{ item.date }}</view>
+            <view class="letter-icon">
+              <image data-id="{{ item._id }}" bindtap="openNewCommentPanel" src="../../images/something/index-topic-comment.png"></image>
+            </view>
+          </view>
+
+          <!--评论内容-->
+          <view wx:if="{{ item.comment.length!=0 }}" class="comment-content">
+            <view class="comment-list">
+              <view class="comment-left">
+                <image src="../../images/something/fill-comment.png"></image>
+              </view>
+              <view class="comment-right">
+                <block wx:for="{{ item.comment }}" wx:for-item="commentItem" wx:for-index="commentIndex" wx:key="index">
+                  <view data-commentText="{{ commentItem.commentText }}" data-openid="{{commentItem.openid}}" data-nickName="{{commentItem.nickName}}" data-id="{{ item._id }}" data-commentId="{{ commentItem.id }}" bindtap="replyComment" bindlongpress="showCommentMenu" class="comment-item">
+                    <view class="comment-name">{{ commentItem.nickName }}</view>
+                    <view wx:if="{{ item._openid==commentItem.openid }}" class="comment-name">(楼主)</view>
+                    <text class="comment-word">：{{ commentItem.commentText }}</text>
+                    <view class="comment-time">{{ commentItem.date }}</view>
+                  </view>
+
+                  <block wx:for="{{ item.childComment }}" wx:if="{{ commentChildItem.parentId==commentItem.id }}" wx:for-item="commentChildItem" wx:for-index="commentChildIndex" wx:key="index">
+                    <view data-commentText="{{ commentItem.commentText }}" data-openid="{{commentItem.openid}}" data-nickName="{{commentItem.nickName}}" data-id="{{ item._id }}" data-commentId="{{ commentItem.id }}" bindtap="replyComment" bindlongpress="showCommentMenu" class="comment-item">
+                      <view class="comment-name">{{commentChildItem.nickName}}</view>
+                      <view wx:if="{{ item._openid==commentChildItem.openid }}" class="comment-name">(楼主)</view>
+                      <view class="comment-word"> 回复 </view>
+                      <view class="comment-name">{{commentChildItem.parentNickname}}</view>
+                      <!-- <view wx:if="{{ item._openid==commentItem.openid }}" class="comment-name">(楼主)</view> -->
+                      <view class="comment-word">：{{commentChildItem.commentText}}</view>
+                      <view class="comment-time">{{commentChildItem.date}}</view>
+                    </view>
+                  </block>
+                </block>
+              </view>
+            </view>
+          </view>
+
+        </view>
+      </view>
+
+      <view wx:if="{{ tabSelect==1 }}" class="find-container">
+        <view wx:for-item="item" wx:for-index="outerIndex" wx:for="{{ list }}" class="container-item" wx:key="index">
+          <!--头像、昵称、身份-->
+          <view class="item-header">
+            <view class="avatar-item">
+              <image class="avatar-border" src="../../images/something/border.png" />
+              <image class="user-avatar" src="{{ item.avatarCloudUrl }}" />
+              <image wx:if="{{ item.gender==1 }}" class="poster-gender" src="../../images/female.png" />
+              <image wx:if="{{ item.gender==0 }}" class="poster-gender" src="../../images/male.png" />
+            </view>
+            <view class="nickname-item">
+              <view class="nickname-top">
+                <view class="poster-nickname">{{ item.nickName }}</view>
+                <image wx:if="{{ item.roleId==1 }}" src="../../images/something/index-admin.png"></image>
+              </view>
+            </view>
+            <view class="icon-item">
+              <image data-id="{{ item._id }}" bindtap="deletePost" src="../../images/something/index-delete.png"></image>
+            </view>
+          </view>
+
+          <!--内容-->
+          <view class="item-content">
+            <view class="">
+              <text style="font-size:45rpx;">物品：{{ item.goodsClass }}</text>
+            </view>
+            <view class="">
+              <text style="font-size:40rpx;">时间：{{ item.goodsDate }}</text>
+            </view>
+            <view class="">
+              <text style="font-size:35rpx;">地点：{{ item.goodsPlace }}</text>
+            </view>
+            <view class="">
+              <text>{{ item.textContent }}</text>
+            </view>
+            <view class="item-content-image">
+              <!--aspectFill缩放模式，保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来。-->
+              <image data-id="{{ outerIndex }}" data-index="{{ index }}" wx:for-item="innerItem" wx:for-index="index" wx:for="{{ item.uploadImgList }}" mode="aspectFill" src="{{ innerItem }}" bindtap='previewImage' wx:key="index"></image>
+            </view>
+          </view>
+
+          <!-- 时间、联系方式 -->
+          <view class="item-footer">
+            <view class="date">{{ item.date }}</view>
+            <view class="letter-icon">
+              <image wx:if="{{ item.phone.length!=0 }}" data-value="{{ item.phone }}" bindtap="copyPhone" src="../../images/find/phone.png"></image>
+              <image wx:else="" src="../../images/find/phone-null.png"></image>
+            </view>
+            <view class="letter-icon">
+              <image wx:if="{{ item.qq.length!=0 }}" data-value="{{ item.qq }}" bindtap="copyQQ" src="../../images/find/qiuqiu.png"></image>
+              <image wx:else="" src="../../images/find/qiuqiu-null.png"></image>
+            </view>
+            <view class="letter-icon">
+              <image wx:if="{{ item.wechat.length!=0 }}" data-value="{{ item.wechat }}" bindtap="copyWechat" src="../../images/find/wechat.png"></image>
+              <image wx:else="" src="../../images/find/wechat-null.png"></image>
+            </view>
+          </view>
+
+        </view>
+      </view>
+
+      <view wx:if="{{tabSelect==2}}" class="partner-container">
+        <view class='container'>
+          <view class='content'>
+            <view class='content-left'>
+              <block wx:if="{{ index%2==0 }}" wx:for="{{ list }}" wx:key="index">
+                <view class='item'>
+                  <image data-id="{{ index }}" bindtap="openPartnerDetail" class='main-pic' mode='widthFix' src="{{ item.uploadImgList[0] }}"></image>
+                  <view class='footer'>
+                    <view data-id="{{ index }}" bindtap="openPartnerDetail" class='footer-item'>
+                      <view class='user-info'>
+                        <image class='icon avatar' src="{{ item.avatarCloudUrl }}"></image>
+                        <image class="left-avatar-border" src="../../images/something/border.png"></image>
+                        <image wx:if="{{ item.gender==0 }}" class="gender-icon" src="../../images/male.png" />
+                        <image wx:if="{{ item.gender==1 }}" class="gender-icon" src="../../images/female.png" />
+                        <view class="user-name">{{ item.nickName}} </view>
+                      </view>
+                      <view class="taContent">{{ item.taContent }}</view>
+                    </view>
+                    <view class='delete-icon'>
+                      <view class="date">{{ item.date }}</view>
+                      <image data-id="{{ item._id }}" bindtap="deletePost" class="delete-img" src="../../images/something/index-delete.png"></image>
+                    </view>
+                  </view>
+                </view>
+              </block>
+            </view>
+
+            <view class='content-right'>
+              <block wx:for="{{ list }}" wx:key="index">
+                <view wx:if="{{ index%2==1 }}" class='item'>
+                  <image data-id="{{ index }}" bindtap="openPartnerDetail" class='main-pic' src="{{ item.uploadImgList[0] }}"></image>
+                  <view class='footer'>
+                    <view data-id="{{ index }}" bindtap="openPartnerDetail" class='footer-item'>
+                      <view class='user-info'>
+                        <image class='icon avatar' style='width: 40rpx;' src="{{ item.avatarCloudUrl }}"></image>
+                        <image class="right-avatar-border" src="../../images/something/border.png"></image>
+                        <image wx:if="{{ item.gender==0 }}" class="gender-icon" src="../../images/male.png" />
+                        <image wx:if="{{ item.gender==1 }}" class="gender-icon" src="../../images/female.png" />
+                        <view class="user-name">{{ item.nickName }}</view>
+                      </view>
+                      <view class="taContent">{{ item.taContent }}</view>
+                      <view class='delete-icon'>
+                        <view class="date">{{ item.date }}</view>
+                        <image data-id="{{ item._id }}" bindtap="deletePost" class="delete-img" src="../../images/something/index-delete.png"></image>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </block>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </block>
+  </view>
+  <get-more wx:if="{{ getMore }}"></get-more>
+  <no-more wx:if="{{ noMore }}"></no-more>
+
+
+</view>
+<!-- 输入框 -->
+<view wx:if="{{ showCommentPanel }}" style="bottom:{{ keyboradHeight }}rpx" class='comment-input-container'>
+  <textarea bindinput="getCommentText" value="{{ commentText }}" placeholder="{{placeholder}}" fixed auto-focus maxlength="200" cursor-spacing="15" fixed="true" auto-height show-confirm-bar="{{ false }}" bindkeyboardheightchange="keyboardHeightChange"></textarea>
+  <view class='send-button'>
+    <button bindtap="submitComment" class="comment-button" size="mini">发送</button>
+  </view>
+</view>

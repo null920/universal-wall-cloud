@@ -1,0 +1,12 @@
+/* components/noMore/noMore.wxss */
+.no-more-data {
+  width: 100%;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 25rpx;
+  font-weight: 300;
+  text-align: center;
+  color: darkgray;
+}

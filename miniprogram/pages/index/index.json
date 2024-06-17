@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "tab": "../../components/tab/tab",
+    "get-more": "../../components/getMore/getMore",
+    "no-more": "../../components/noMore/noMore",
+    "l-notice-bar": "../../dist/notice-bar/index"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#fff",
+  "backgroundTextStyle": "dark"
+}

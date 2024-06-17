@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/find/find",
+    "pages/personal/personal",
+    "pages/personalDetail/personalDetail",
+    "pages/partner/partner",
+    "pages/indexForm/indexForm",
+    "pages/findForm/findForm",
+    "pages/partnerForm/partnerForm",
+    "pages/partnerDetail/partnerDetail",
+    "pages/myPost/myPost",
+    "pages/managerAudit/managerAudit",
+    "pages/userAudit/userAudit",
+    "pages/updateLogs/updateLogs"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "校园万能墙",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#fbc346",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./images/tabBar/index.png",
+        "selectedIconPath": "./images/tabBar/index-selected.png"
+      },
+      {
+        "pagePath": "pages/find/find",
+        "text": "失&拾",
+        "iconPath": "./images/tabBar/find.png",
+        "selectedIconPath": "./images/tabBar/find-selected.png"
+      },
+      {
+        "pagePath": "pages/partner/partner",
+        "text": "找伴儿",
+        "iconPath": "./images/tabBar/partner.png",
+        "selectedIconPath": "./images/tabBar/partner-selected.png"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "text": "我的",
+        "iconPath": "./images/tabBar/personal.png",
+        "selectedIconPath": "./images/tabBar/personal-selected.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

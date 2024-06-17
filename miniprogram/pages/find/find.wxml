@@ -1,0 +1,77 @@
+<!--pages/find/find.wxml-->
+<view class="find-container">
+  <!-- 导航栏 -->
+  <tab class="totop" tabList="{{ tabList }}" bindgetTabSelect="getTabSelect"></tab>
+
+  <view wx:if="{{ show }}" class="container">
+    <view wx:for="{{ list }}" class="container-item" wx:key="index" wx:for-item="item" wx:for-index="outerIndex">
+      <!--头像、昵称、身份-->
+      <view class="item-header">
+        <view class="avatar-item">
+          <image class="avatar-border" src="../../images/something/border.png" />
+          <image class="user-avatar" src="{{ item.avatarCloudUrl }}" />
+          <image wx:if="{{ item.gender==1 }}" class="poster-gender" src="../../images/female.png" />
+          <image wx:if="{{ item.gender==0 }}" class="poster-gender" src="../../images/male.png" />
+        </view>
+        <view class="nickname-item">
+          <view class="nickname-top">
+            <view class="poster-nickname">{{ item.nickName }}</view>
+            <image wx:if="{{ item.roleId==1 }}" src="../../images/something/index-admin.png"></image>
+          </view>
+        </view>
+        <view class="icon-item">
+          <image data-id="{{ item._id }}" bindtap="deletePost" wx:if="{{ item._openid==openid }}" src="../../images/something/index-delete.png"></image>
+        </view>
+      </view>
+
+      <!--内容-->
+      <view class="item-content">
+        <view class="">
+          <text style="font-size:45rpx;">物品：{{ item.goodsClass }}</text>
+        </view>
+        <view class="">
+          <text style="font-size:40rpx;">时间：{{ item.goodsDate }}</text>
+        </view>
+        <view class="">
+          <text style="font-size:35rpx;">地点：{{ item.goodsPlace }}</text>
+        </view>
+        <view class="">
+          <text>{{ item.textContent }}</text>
+        </view>
+        <view class="item-content-image">
+          <!--aspectFill缩放模式，保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来。-->
+          <image wx:for-item="innerItem" wx:for="{{ item.uploadImgList }}" data-id="{{ outerIndex }}" data-index="{{ index }}" mode="aspectFill" src="{{ innerItem }}" bindtap='previewImage' wx:key="index"></image>
+        </view>
+      </view>
+
+      <!-- 时间、联系方式 -->
+      <view class="item-footer">
+        <view class="date">{{ item.date }}</view>
+        <view class="letter-icon">
+          <image wx:if="{{ item.phone.length!=0 }}" data-value="{{ item.phone }}" bindtap="copyPhone" src="../../images/find/phone.png"></image>
+          <image wx:else="" src="../../images/find/phone-null.png"></image>
+        </view>
+        <view class="letter-icon">
+          <image wx:if="{{ item.qq.length!=0 }}" data-value="{{ item.qq }}" bindtap="copyQQ" src="../../images/find/qiuqiu.png"></image>
+          <image wx:else="" src="../../images/find/qiuqiu-null.png"></image>
+        </view>
+        <view class="letter-icon">
+          <image wx:if="{{ item.wechat.length!=0 }}" data-value="{{ item.wechat }}" bindtap="copyWechat" src="../../images/find/wechat.png"></image>
+          <image wx:else="" src="../../images/find/wechat-null.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <get-more wx:if="{{ getMore }}"></get-more>
+  <no-more wx:if="{{ noMore }}"></no-more>
+
+  <!-- 发布帖子 -->
+  <view class='post-container'>
+    <view class="wall"></view>
+    <view class="post">
+      <image bindtap="openFindForm" src="../../images/something/index-poster.png"></image>
+    </view>
+  </view>
+
+</view>

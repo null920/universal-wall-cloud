@@ -1,0 +1,266 @@
+.personal-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.personal-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-top-style: solid;
+  border-width: 1rpx;
+  border-color: #f0f8ff;
+  align-items: center;
+}
+.totop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 500;
+}
+.settle-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 150rpx;
+}
+
+.user-avatar-border {
+  width: 90rpx;
+  height: 90rpx;
+  position: absolute;
+  z-index: 200;
+  left: 275rpx;
+  top: 187rpx;
+}
+.gender {
+  width: 42rpx;
+  height: 40rpx;
+  position: absolute;
+  z-index: 100;
+  top: 330rpx;
+  left: 285rpx;
+}
+.avatar-wrapper {
+  width: 250rpx;
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50rpx;
+  border: 5rpx solid #303030;
+  border-radius: 40rpx;
+  margin-top: 50rpx;
+}
+
+.settle-avatar {
+  margin-left: -4rpx;
+  position: relative;
+  z-index: 100;
+  top: -10rpx;
+  border: 2rpx solid #303030;
+}
+
+.avatar-wrapper .settle-avatar {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 35rpx;
+  box-shadow: 0px 0px 50rpx -10rpx rgba(193, 193, 193, 0.71);
+  border: 5rpx solid #303030;
+}
+
+.nickname-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50rpx;
+}
+
+.nickname-tab {
+  width: 50%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 32rpx;
+  font-family: SF Pro Text, SF Pro Text-Heavy;
+  font-weight: 800;
+  text-align: center;
+  color: #303030;
+  line-height: 80rpx;
+  margin-bottom: 30rpx;
+  background: linear-gradient(110deg, #ffd73b 0%, #fbc346 100%);
+  border-radius: 20rpx;
+}
+
+.nickname-input input {
+  padding: 15rpx 15rpx;
+}
+
+.nickname-data-input {
+  width: 600rpx;
+  border: 6rpx solid #303030;
+  border-radius: 20rpx;
+}
+
+.set-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.set-ttile {
+  width: 100%;
+  font-size: 32rpx;
+  font-family: SF Pro Text, SF Pro Text-Heavy;
+  font-weight: 800;
+  text-align: center;
+  color: #303030;
+  line-height: 32rpx;
+  margin-bottom: 30rpx;
+}
+.radio-group {
+  width: 100%;
+  margin: 30rpx 0;
+  padding: 30rpx 0;
+  display: flex;
+  justify-content: space-around;
+  border-top: 3rpx dashed #000;
+  border-bottom: 3rpx dashed #000;
+}
+.radio-label {
+  display: flex;
+}
+.button-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 80rpx;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 120rpx;
+}
+.login-button {
+  height: 90rpx;
+  width: 100%;
+  background: linear-gradient(110deg, #ffd73b 0%, #fbc346 100%);
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.message-item {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0px 4rpx 10rpx 0px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15rpx;
+  margin-top: 120rpx;
+}
+
+.message-item .item {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10rpx 0rpx;
+}
+
+.item .left {
+  width: 13%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.left .avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border: 4rpx solid #303030;
+  border-radius: 28rpx;
+}
+
+.avatar-view {
+  position: relative;
+}
+
+.message-avatar-border {
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  z-index: 200;
+  left: -15rpx;
+  top: -15rpx;
+}
+
+.item .content {
+  width: 62%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 15rpx;
+}
+
+.content .username {
+  font-size: 30rpx;
+  font-family: PingFangSC, PingFangSC-Medium;
+  font-weight: 800;
+  text-align: left;
+  color: #303030;
+}
+
+.delete-message {
+  background: #ffd73b;
+  font-size: 20rpx;
+  padding: 10rpx;
+  border-radius: 5rpx;
+  width: 150rpx;
+  text-align: center;
+}
+
+.praise image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.content .created_at {
+  font-size: 22rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #8c8c8c;
+}
+
+.item .right {
+  width: 23%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.right image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 20rpx;
+}
+
+.right .content {
+  font-size: 27rpx;
+  width: 130rpx;
+  height: 130rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,109 @@
+<!--pages/personal/personal.wxml-->
+<view class="container">
+  <!-- 背景 -->
+  <view class="bg-content">
+    <view class="bg">
+      <image class="background" wx:if="{{ login }}" bindtap="modifyBackground" bindlongpress="previewImage" mode="aspectFill" src="{{ backgroundImg }}" data-id="{{ backgroundImg }}"></image>
+    </view>
+
+    <view class="bg-null">
+    </view>
+
+    <view wx:if="{{login}}" class="avatar-container">
+      <image class="avatar" src="{{avatarUrl}}"></image>
+      <image class="header-avatar-border" src="../../images/something/border.png"></image>
+      <image wx:if="{{gender==0}}" class="gender" src="../../images/male.png"></image>
+      <image wx:if="{{gender==1}}" class="gender" src="../../images/female.png">
+      </image>
+    </view>
+
+    <view wx:else class="avatar-container">
+      <view class="login-button">
+        <button bindtap="toLogin" class="login-btn" hover-class="button-hover">登录</button>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{login}}" class="user-info">
+    <view class="nickname">
+      <view class="nickname-data">{{nickName}}</view>
+    </view>
+  </view>
+
+  <!-- 个人信息、我的帖子、帖子审核、更新日志、待定、退出登录-->
+  <view wx:if="{{login}}" class="user-info-content">
+    <view class="info-top">
+      <view class="user-info-item" bindtap="openInformation">
+        <view class="user-info-image">
+          <view class="image-content p1">
+            <image class="img-p1" src="../../images/personal/p1.png"></image>
+          </view>
+        </view>
+        <view class="user-info-data">
+          <view class="user-info-flag">个人信息</view>
+        </view>
+      </view>
+      <view class="user-info-item" bindtap="openMyPost">
+        <view class="user-info-image">
+          <view class="image-content p2">
+            <image class="img-p2" src="../../images/personal/p2.png"></image>
+          </view>
+        </view>
+        <view class="user-info-data">
+          <view class="user-info-flag">我的帖子</view>
+          <!-- <view class="user-info-word"></view> -->
+        </view>
+      </view>
+    </view>
+    <view class="info-top">
+      <view class="user-info-item" bindtap="openAudit">
+        <view class="user-info-image">
+          <view class="image-content p3">
+            <image class="img-p2" src="../../images/personal/p3.png"></image>
+          </view>
+        </view>
+        <view class="user-info-data">
+          <view class="user-info-flag">帖子审核</view>
+          <!-- <view class="user-info-word">0</view> -->
+        </view>
+      </view>
+      <view class="user-info-item" bindtap="openUpdateLogs">
+        <view class="user-info-image">
+          <view class="image-content p4">
+            <image class="img-p1" src="../../images/personal/p4.png"></image>
+          </view>
+        </view>
+        <view class="user-info-data">
+          <view class="user-info-flag">更新日志</view>
+          <view class="user-info-word"></view>
+        </view>
+      </view>
+    </view>
+    <view class="info-top">
+      <view class="user-info-item">
+        <view class="user-info-image">
+          <view class="image-content p5">
+            <image class="img-p1" src="../../images/personal/p5.png"></image>
+          </view>
+        </view>
+        <view class="user-info-data">
+          <view class="user-info-flag">待定</view>
+          <!-- <view class="user-info-word">0</view> -->
+        </view>
+      </view>
+      <view class="user-info-item" bindtap="logout">
+        <view class="user-info-image">
+          <view class="image-content p6">
+            <image class="img-p1" src="../../images/personal/p6.png"></image>
+          </view>
+        </view>
+        <view class="user-info-data">
+          <view class="user-info-flag">退出登录</view>
+          <view class="user-info-word"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+</view>

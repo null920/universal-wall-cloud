@@ -1,0 +1,108 @@
+<view class="body">
+  <l-notice-bar scrollable front-icon-name="notification" type="roll" speed="1000" end-icon-name="close" show="{{noticeBarShow}}" bind:linicontap="closeNoticeBar">{{noticeBar}}</l-notice-bar>
+  <swiper class="banner" indicator-dots="ture" interval="4000" duration="900" autoplay circular>
+    <block wx:for="{{ banner }}" wx:key="*this">
+      <swiper-item>
+        <image class="banner-image" src="{{item}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 占位 -->
+  <view class="placeholder {{ scrollTop>bannerHeight?'topPlaceholder':''}}">
+  </view>
+
+  <tab bannerHeight="{{ bannerHeight }}" scrollTop="{{ scrollTop }}" style="top: -90rpx; position:relative;" tabList="{{ tabList }}" bindgetTabSelect="getTabSelect"></tab>
+
+  <view wx:if="{{ show }}" bindtouchend="hideCommentPanel" class="something">
+    <view wx:for="{{ list }}" class="something-item" wx:key="index" wx:for-item="item" wx:for-index="outerIndex">
+      <!--头像、昵称、身份-->
+      <view class="item-header">
+        <view class="avatar-item">
+          <image class="avatar-border" src="../../images/something/border.png" />
+          <image class="user-avatar" src="{{ item.avatarCloudUrl }}" />
+          <image wx:if="{{ item.gender==1 }}" class="gender" src="../../images/female.png" />
+          <image wx:if="{{ item.gender==0 }}" class="gender" src="../../images/male.png" />
+        </view>
+        <view class="nickname-item">
+          <view class="nickname-top">
+            <view class="poster-nickname">{{ item.nickName }}</view>
+            <image wx:if="{{ item.roleId==1 }}" src="../../images/something/index-admin.png"></image>
+          </view>
+        </view>
+        <view class="icon-item">
+          <image data-index="{{ outerIndex }}" data-id="{{ item._id }}" bindtap="deletePost" wx:if="{{ item._openid==openid }}" src="../../images/something/index-delete.png"></image>
+        </view>
+      </view>
+
+      <!--内容-->
+      <view class="item-content">
+        <view class="item-content-word">{{ item.textContent }}</view>
+        <view wx:if="{{ item.uploadImgList.length>=1 }}" class="item-content-image">
+          <!--aspectFill缩放模式，保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来。-->
+          <image data-id="{{ outerIndex }}" bindtap="previewImage" wx:key="index" wx:for="{{ item.uploadImgList }}" wx:for-item="innerItem" mode="aspectFill" src="{{ innerItem }}" data-index="{{ index }}"></image>
+        </view>
+      </view>
+
+      <!--时间、评论按钮-->
+      <view class="item-footer">
+        <view class="date">{{item.date}}</view>
+        <view class="letter-icon">
+          <image data-id="{{ item._id }}" bindtap="openNewCommentPanel" src="../../images/something/index-topic-comment.png"></image>
+        </view>
+      </view>
+
+      <!--评论内容-->
+      <view wx:if="{{ item.comment.length!=0 }}" class="comment-content">
+        <view class="comment-list">
+          <view class="comment-left">
+            <image src="../../images/something/fill-comment.png"></image>
+          </view>
+
+          <view class="comment-right">
+            <block wx:for="{{ item.comment }}" wx:for-item="commentItem" wx:for-index="commentIndex" wx:key="index">
+              <view data-commentText="{{ commentItem.commentText }}" data-openid="{{commentItem.openid}}" data-nickName="{{commentItem.nickName}}" data-id="{{ item._id }}" data-commentId="{{ commentItem.id }}" bindtap="replyComment" bindlongpress="showCommentMenu" class="comment-item">
+                <view class="comment-name">{{ commentItem.nickName }}</view>
+                <view wx:if="{{ item._openid==commentItem.openid }}" class="comment-name">(楼主)</view>
+                <text class="comment-word">：{{ commentItem.commentText }}</text>
+                <view class="comment-time">{{ commentItem.date }}</view>
+              </view>
+
+              <block wx:for="{{ item.childComment }}" wx:if="{{commentItem.id==commentChildItem.parentId}}" wx:for-item="commentChildItem" wx:for-index="commentChildIndex" wx:key="index">
+                <view data-commentText="{{ commentChildItem.commentText }}" data-openid="{{commentChildItem.openid}}" data-nickName="{{commentChildItem.nickName}}" data-id="{{ item._id }}" data-commentId="{{ commentChildItem.id }}" bindtap="replyComment" bindlongpress="showCommentMenu" class="comment-item">
+                  <view class="comment-name">{{commentChildItem.nickName}}</view>
+                  <view wx:if="{{ item._openid==commentChildItem.openid }}" class="comment-name">(楼主)</view>
+                  <view class="comment-word"> 回复 </view>
+                  <view class="comment-name">{{commentChildItem.parentNickname}}</view>
+                  <!-- <view wx:if="{{ item._openid==commentItem.openid }}" class="comment-name">(楼主)</view> -->
+                  <view class="comment-word">：{{commentChildItem.commentText}}</view>
+                  <view class="comment-time">{{commentChildItem.date}}</view>
+                </view>
+              </block>
+            </block>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+  <get-more wx:if="{{ getMore }}"></get-more>
+  <no-more wx:if="{{ noMore }}"></no-more>
+
+  <!-- 发布信息 -->
+  <view class='post-container'>
+    <view class="wall"></view>
+    <view class="post">
+      <image src="../../images/something/index-poster.png" bindtap="openIndexForm"></image>
+    </view>
+  </view>
+
+  <!-- 输入框 -->
+  <view wx:if="{{ showCommentPanel }}" class='comment-input-container'>
+    <textarea bindinput="getCommentText" value="{{ commentText }}" placeholder="{{placeholder}}" auto-focus maxlength="200" cursor-spacing="15" fixed="true" auto-height show-confirm-bar="{{ false }}"></textarea>
+    <view class='send-button'>
+      <button bindtap="submitComment" class="comment-button" size="mini">发送</button>
+    </view>
+  </view>
+
+</view>

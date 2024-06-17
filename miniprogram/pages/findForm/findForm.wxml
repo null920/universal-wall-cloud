@@ -1,0 +1,61 @@
+<!--pages/findForm/findForm.wxml-->
+<view class="form-container">
+  <view class="form">
+    <view class="goods">
+      <text class="label">物品类别</text>：
+      <textarea value="{{ goodsClass }}" bindinput="getGoodsClass" maxlength="20" class="textarea-goods" show-confirm-bar="{{false}}" placeholder="请填写物品类别"></textarea>
+    </view>
+    <view class="goods">
+      <text class="label">时间</text>：
+      <textarea value="{{ goodsDate }}" bindinput="getGoodsDate" maxlength="50" class="textarea-goods" show-confirm-bar="{{false}}" placeholder="请填写时间"></textarea>
+    </view>
+    <view class="goods">
+      <text class="label">地点</text>：
+      <textarea value="{{ goodsPlace }}" bindinput="getGoodsPlace" maxlength="50" class="textarea-goods" show-confirm-bar="{{false}}" placeholder="请填写地点"></textarea>
+    </view>
+    <view class="goods">
+      <text class="label">电话</text>：
+      <textarea value="{{ phone }}" bindinput="getPhone" maxlength="11" class="textarea-goods" show-confirm-bar="{{false}}" placeholder="您可以留下任一联系方式" />
+    </view>
+    <view class="goods">
+      <text class="label">Q Q</text>：
+      <textarea value="{{ qq }}" bindinput="getQQ" maxlength="10" class="textarea-goods" show-confirm-bar="{{false}}" placeholder="您可以留下任一联系方式"></textarea>
+    </view>
+    <view class="goods">
+      <text class="label">微信</text>：
+      <textarea value="{{ wechat }}" bindinput="getWechat" maxlength="20" class="textarea-goods" show-confirm-bar="{{false}}" placeholder="您可以留下任一联系方式"></textarea>
+    </view>
+
+    <!-- 发布类型选择框 -->
+    <radio-group class="radio-group" bindchange="getRadioValue">
+      <label class="radio-label" wx:for="{{ tabList }}" wx:key="index">
+        <radio value="{{ index }}" checked="{{ radioValue==index }}" />
+        <view>{{ item.tabName }}</view>
+      </label>
+    </radio-group>
+
+    <view class="desc">
+      <text class="desc-text">详细描述：</text>
+      <textarea value="{{ textContent }}" bindinput="getTextContent" maxlength="1024" class="textarea-content" show-confirm-bar="{{false}}" placeholder="您可以在这里详细描述一下"></textarea>
+    </view>
+
+    <view class='image-form'>
+      <view class="image-top">
+        <text>目前仅且只允许最多上传6张照片</text>
+        <text>{{imgList.length}}/6</text>
+      </view>
+      <view class="select-image">
+        <view class="img-list" wx:for="{{ imgList }}" wx:key="index">
+          <image bindtap="previewImage" data-id="{{ item }}" mode="aspectFill" class="pre-img" src="{{ item }}"></image>
+          <image bindtap="deleteImg" data-index="{{ index }}" class="delete-icon" src="../../images/form/delete.png"></image>
+        </view>
+        <image wx:if="{{imgList.length<6}}" bindtap="uploadImg" class="upload-image" src="../../images/form/select-image.png" />
+      </view>
+    </view>
+
+  </view>
+
+  <view class='button-container'>
+    <button bindtap="submitForm" hover-class="button-hover" class="login-button">提交审核</button>
+  </view>
+</view>

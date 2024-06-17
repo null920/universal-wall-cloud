@@ -1,0 +1,248 @@
+/* pages/personal/personal.wxss */
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-content {
+  width: 100%;
+  position: relative;
+}
+
+.bg {
+  width: 100%;
+  height: 600rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(250, 219, 179);
+}
+.background {
+  width: 100%;
+  height: 600rpx;
+}
+
+.bg-null {
+  width: 100%;
+  height: 100rpx;
+  background: #ffffff;
+  position: absolute;
+  z-index: 100;
+  bottom: -5rpx;
+  border-radius: 50% 50% 0 0 / 90% 90% 0 0;
+}
+
+.my-word {
+  position: absolute;
+  z-index: 300;
+  height: 130rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 250rpx;
+}
+
+.my-word-content {
+  width: 50%;
+  padding: 20rpx 50rpx;
+  font-size: 25rpx;
+  font-family: OPPOSans, OPPOSans-Regular;
+  font-weight: 400;
+  text-align: CENTER;
+  color: #ffffff;
+  line-height: 28rpx;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 20rpx;
+  backdrop-filter: blur(3rpx);
+}
+
+.avatar-container {
+  width: 100%;
+  height: 150rpx;
+  position: absolute;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  bottom: 20rpx;
+}
+
+.avatar {
+  margin-left: 10rpx;
+  position: relative;
+  z-index: 100;
+  top: -10rpx;
+  border: 2rpx solid #303030;
+}
+
+.avatar-container .avatar {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 35rpx;
+  box-shadow: 0px 0px 50rpx -10rpx rgba(193, 193, 193, 0.71);
+  border: 5rpx solid #303030;
+}
+
+.header-avatar-border {
+  width: 90rpx;
+  height: 90rpx;
+  position: absolute;
+  z-index: 200;
+  bottom: 75rpx;
+  left: 280rpx;
+  top: -30rpx;
+}
+
+.gender {
+  width: 42rpx;
+  height: 40rpx;
+  position: absolute;
+  z-index: 600;
+  bottom: -5rpx;
+  left: 290rpx;
+}
+.login-button {
+  height: 100%;
+  width: 200rpx;
+}
+.login-button .login-btn {
+  line-height: 90rpx;
+  width: 200rpx;
+  background: linear-gradient(110deg, #ffd73b 0%, #fbc346 100%);
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.user-info {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.nickname {
+  font-size: 40rpx;
+  font-family: SF Pro Text, SF Pro Text-Bold;
+  font-weight: 700;
+  text-align: CENTER;
+  color: #303030;
+  line-height: 40rpx;
+  margin-top: 5rpx;
+}
+
+.nickname-data {
+  margin-left: 13rpx;
+  width: 300rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-info-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80rpx;
+}
+
+.info-top {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.user-info-item {
+  width: 45%;
+  display: flex;
+  flex-direction: row;
+  background: #f6f5f4;
+  border-radius: 40rpx;
+  height: 180rpx;
+  margin-bottom: 30rpx;
+}
+
+.user-info-image {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-p1 {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.img-p2 {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.image-content {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 60rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.p1 {
+  background: #4bc9f0;
+}
+
+.p2 {
+  background: #3772ff;
+}
+
+.p3 {
+  background: #fa9459;
+}
+
+.p4 {
+  background: #12a07c;
+}
+.p5 {
+  background: #9757d7;
+}
+.p6 {
+  background: #ec5683;
+}
+
+.user-info-data {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.user-info-flag {
+  font-size: 25rpx;
+  font-family: OPPOSans, OPPOSans-Medium;
+  font-weight: 500;
+  text-align: LEFT;
+  color: #353945;
+  line-height: 40rpx;
+}
+
+.user-info-word {
+  font-size: 35rpx;
+  font-family: OPPOSans, OPPOSans-Heavy;
+  font-weight: 800;
+  text-align: LEFT;
+  color: #353945;
+  line-height: 28rpx;
+}

@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "tab": "../../components/tab/tab",
+    "get-more": "../../components/getMore/getMore",
+    "no-more": "../../components/noMore/noMore"
+  },
+  "navigationBarTitleText": "我的帖子",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#fff",
+  "backgroundTextStyle": "dark"
+}

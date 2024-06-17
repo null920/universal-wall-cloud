@@ -1,0 +1,46 @@
+<!--pages/partnerDetail/partnerDetail.wxml-->
+<view class="partner-container">
+  <view class="detail-container">
+    <view class="head-container">
+      <swiper circular autoplay interval="5000" duration="900" class="image-container" indicator-dots="true">
+        <block wx:for="{{ list.uploadImgList }}" wx:key="index">
+          <swiper-item class="image-item">
+            <image data-index="{{ index }}" bindtap="previewImage" class="partner-image" mode="aspectFill" src="{{ item }}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+
+    <view class="introduction-container">
+      <view class="major">
+        <view class="want-tab">WantTa</view>
+        <view>{{ list.taContent }}</view>
+      </view>
+      <view class="major">
+        <view class="self-introduction">个人介绍</view>
+        <view>{{ list.introduce }}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="contact-information">
+    <view class="information-head">
+      <view class='information-title'>
+        <view>联系方式</view>
+        <view class="title-border"></view>
+      </view>
+      <view class='info'>
+        <image wx:if="{{ list.phone.length!=0 }}" data-value="{{ list.phone }}" bindtap="copyPhone" class="info-icon" src="../../images/find/phone.png"></image>
+        <image wx:else="" class="info-icon" src="../../images/find/phone-null.png"></image>
+      </view>
+      <view class='info'>
+        <image wx:if="{{ list.qq.length!=0 }}" data-value="{{ list.qq }}" bindtap="copyQQ" class="info-icon" src="../../images/find/qiuqiu.png"></image>
+        <image wx:else="" class="info-icon" src="../../images/find/qiuqiu-null.png"></image>
+      </view>
+      <view class='info'>
+        <image wx:if="{{ list.wechat.length!=0 }}" data-value="{{ list.wechat }}" bindtap="copyWechat" class="info-icon" src="../../images/find/wechat.png"></image>
+        <image wx:else="" class="info-icon" src="../../images/find/wechat-null.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,30 @@
+/* components/getMore/getMore.wxss */
+.get-more {
+  height: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 25rpx;
+  font-weight: 200;
+  width: 100%;
+  background: #f2f2f2;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.get-more .loading-img {
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.get-more .get-more-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  margin-left: 15rpx;
+}

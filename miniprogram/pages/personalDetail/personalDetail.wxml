@@ -1,0 +1,68 @@
+<view class="personal-container">
+  <view class="personal-content">
+    <!-- tab栏 -->
+    <!-- <tab class="totop" tabList="{{ tabList }}" bindgetTabSelect="getTabSelect"></tab> -->
+
+    <!-- 个人信息 -->
+    <view class="settle-info" wx:if="{{tabSelect == 0}}">
+      <image class="user-avatar-border" src="../../images/something/border.png"></image>
+      <button bindchooseavatar="getAvatarUrl" style="padding-left:0px;padding-right:0px;width:82px;height: 78px;" size="mini" class="avatar-wrapper" open-type="chooseAvatar">
+        <image class="settle-avatar" src="{{avatarUrl}}"></image>
+      </button>
+      <image wx:if="{{gender==0}}" class="gender" src="../../images/male.png"></image>
+      <image wx:if="{{gender==1}}" class="gender" src="../../images/female.png"></image>
+      <view class="nickname-input">
+        <view class="nickname-tab">{{nickName}}</view>
+        <input type="nickname" confirm-type="done" maxlength="12" bindinput="getNickName" class="nickname-data-input" placeholder="请输入想修改的昵称(最长12个字母或汉字)" />
+      </view>
+
+      <radio-group class="radio-group" bindchange="getRadioValue">
+        <label class="radio-label" wx:for="{{ radioList }}" wx:key="index">
+          <radio value="{{ index }}" checked="{{ gender==index }}" />
+          <view>{{ item }}</view>
+        </label>
+      </radio-group>
+
+      <view class='button-container'>
+        <button bindtap="submitForm" hover-class="button-hover" class="login-button">保存信息</button>
+      </view>
+    </view>
+
+    <!-- 消息列表 -->
+    <!-- <view class="message-item" wx:if="{{tabSelect == 1}}">
+      <view class='item'>
+        <view class='left'>
+          <view class="avatar-view">
+            <image class="message-avatar-border" src="../../images/something/border.png"></image>
+            <image class="avatar" src="../../images/something/f.png"></image>
+          </view>
+        </view>
+        <view class='content'>
+          <view class='username'>张三
+          </view>
+          <view class='message'></view>
+          <view class='message'></view>
+          <view class='message'></view>
+          <view class='delete-message'>
+            该消息已被删除
+          </view>
+          <view class='praise'>
+            <image src='../../images/something/index-like.png'></image>
+          </view>
+          <view class='created_at'>2023</view>
+        </view>
+        <view class='right'>
+          <view class='image'>
+            <image mode='aspectFill'></image>
+          </view>
+          <view class='content'>
+          </view>
+        </view>
+
+      </view>
+    </view> -->
+
+  </view>
+
+
+</view>

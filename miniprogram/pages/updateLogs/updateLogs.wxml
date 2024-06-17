@@ -1,0 +1,15 @@
+<!--pages/updateLogs/updateLogs.wxml-->
+<view class="container">
+  <block wx:for="{{ list }}" wx:key="index">
+    <view class="flex container-item">
+      <view class="left">
+        <view class="day">{{ item.day }}</view>
+        <view class="time">{{ item.time }}</view>
+      </view>
+      <view class="right">
+        <view class="circle"></view>
+        <view class="r_box">{{item.text}}</view>
+      </view>
+    </view>
+  </block>
+</view>

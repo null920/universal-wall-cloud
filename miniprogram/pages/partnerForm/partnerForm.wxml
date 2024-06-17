@@ -1,0 +1,45 @@
+<!--pages/partnerForm/partnerForm.wxml-->
+<view class="form-container">
+  <view class='introduce-content'>
+    <textarea value="{{ taContent }}" bindinput="getTaContent" show-confirm-bar="{{false}}" maxlength="200" placeholder="想找怎样的ta呢..." class='wantTa'></textarea>
+    <textarea value="{{ introduce }}" bindinput="getIntroduce" show-confirm-bar="{{false}}" placeholder="介绍一下自己吧.." class='introduce' maxlength="200"></textarea>
+  </view>
+  <view class="goods">
+    <text class="label">电话</text>：
+    <textarea value="{{ phone }}" bindinput="getPhone" maxlength="11" class="textarea-goods" show-confirm-bar="{{false}}" placeholder="您可以留下任一联系方式" />
+  </view>
+  <view class="goods">
+    <text class="label">Q Q</text>：
+    <textarea value="{{ qq }}" bindinput="getQQ" maxlength="10" class="textarea-goods" show-confirm-bar="{{false}}" placeholder="您可以留下任一联系方式"></textarea>
+  </view>
+  <view class="goods">
+    <text class="label">微信</text>：
+    <textarea value="{{ wechat }}" bindinput="getWechat" maxlength="20" class="textarea-goods" show-confirm-bar="{{false}}" placeholder="您可以留下任一联系方式"></textarea>
+  </view>
+
+  <!-- 发布类型选择框 -->
+  <radio-group class="radio-group" bindchange="getRadioValue">
+    <label class="radio-label" wx:for="{{ tabList }}" wx:key="index">
+      <radio value="{{ index }}" checked="{{ radioValue==index }}" />
+      <view>{{ item.tabName }}</view>
+    </label>
+  </radio-group>
+
+  <view class='image-form'>
+    <view class="image-top">
+      <text>目前仅且只允许最多上传6张照片</text>
+      <text>{{imgList.length}}/6</text>
+    </view>
+    <view class="select-image">
+      <view class="img-list" wx:for="{{ imgList }}" wx:key="index">
+        <image bindtap="previewImage" data-id="{{ item }}" mode="aspectFill" class="pre-img" src="{{ item }}"></image>
+        <image bindtap="deleteImg" data-index="{{ index }}" class="delete-icon" src="../../images/form/delete.png"></image>
+      </view>
+      <image wx:if="{{imgList.length<6}}" bindtap="uploadImg" class="upload-image" src="../../images/form/select-image.png" />
+    </view>
+  </view>
+
+  <view class='button-container'>
+    <button bindtap="submitForm" hover-class="button-hover" class="login-button">提交审核</button>
+  </view>
+</view>

@@ -1,0 +1,105 @@
+/* pages/updateLogs/updateLogs.wxss */
+page {
+  padding-bottom: 40rpx;
+}
+
+.container {
+  width: 702rpx;
+  background: #ecd2d2;
+  border-radius: 20rpx;
+  margin: 40rpx auto;
+  box-sizing: border-box;
+  padding: 37rpx 24rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #4d4d4d;
+  box-shadow: 0px 0px 20rpx 0px rgba(203, 203, 203, 0.5);
+}
+.flex {
+  display: flex;
+}
+.left {
+  width: 150rpx;
+  text-align: center;
+  line-height: 33rpx;
+  margin-right: 60rpx;
+  flex-shrink: 0;
+}
+.left .day {
+  font-size: 26rpx;
+}
+.left .time {
+  font-size: 24rpx;
+  color: rgb(121, 120, 120);
+}
+
+.right {
+  flex: 1;
+  font-weight: 600;
+  line-height: 37rpx;
+  color: #333;
+  position: relative;
+}
+
+.right::after {
+  content: "";
+  position: absolute;
+  width: 2rpx;
+  background: rgb(55, 196, 231);
+  border-radius: 4rpx;
+  height: 100%;
+  left: -40rpx;
+  top: 35rpx;
+}
+
+.right .circle {
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  border: 2rpx solid rgb(55, 196, 231);
+  border-radius: 50%;
+  top: 20rpx;
+  left: -54rpx;
+  z-index: 2;
+  background: #fff;
+}
+.right .circle::after {
+  content: "";
+  position: absolute;
+  width: 15rpx;
+  height: 15rpx;
+  background: rgb(55, 196, 231);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-44%, -55%);
+}
+
+.r_box {
+  width: 453rpx;
+  background: rgb(55, 196, 231);
+  border-radius: 14rpx;
+  box-sizing: border-box;
+  padding: 16rpx 28rpx 23rpx 29rpx;
+  position: relative;
+  margin-bottom: 60rpx;
+}
+.r_box::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 13rpx solid transparent;
+  border-bottom: 13rpx solid transparent;
+  border-right: 17rpx solid rgb(55, 196, 231);
+  left: -15rpx;
+  top: 20rpx;
+}
+
+.container-item:last-child .right .r_box {
+  margin-bottom: 0;
+}
+
+.container-item:last-child .right::after {
+  display: none;
+}

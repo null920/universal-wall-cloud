@@ -1,0 +1,189 @@
+<!--pages/audit/audit.wxml-->
+<view class="managerAudit-container">
+  <tab class="totop" tabList="{{ tabList }}" bindgetTabSelect="getTabSelect"></tab>
+  <view class="managerAudit-content">
+    <block wx:if="{{ show }}">
+      <view wx:if="{{ tabSelect==0 }}" class="something">
+        <view wx:for="{{ list }}" class="something-item" wx:key="index" wx:for-item="item" wx:for-index="outerIndex">
+          <!--头像、昵称、身份-->
+          <view class="item-header">
+            <view class="avatar-item">
+              <image class="avatar-border" src="../../images/something/border.png" />
+              <image class="user-avatar" src="{{ item.avatarCloudUrl }}" />
+              <image wx:if="{{ item.gender==1 }}" class="gender" src="../../images/female.png" />
+              <image wx:if="{{ item.gender==0 }}" class="gender" src="../../images/male.png" />
+            </view>
+            <view class="nickname-item">
+              <view class="nickname-top">
+                <view class="poster-nickname">{{ item.nickName }}</view>
+                <image wx:if="{{ item.roleId }}" src="../../images/something/index-admin.png"></image>
+              </view>
+            </view>
+            <view class="audit-content">
+              <image wx:if="{{ item.auditCode==0 }}" class="audit-image" src="../../images/audit/check-pending.png"></image>
+              <!-- <image wx:if="{{ item.auditCode==1 }}" class="audit-image" src="../../images/audit/pass.png"></image>
+              <image wx:if="{{ item.auditCode==2 }}" class="audit-image" src="../../images/audit/no-pass.png"></image> -->
+            </view>
+            <!-- <view class="icon-item">
+              <image data-id="{{ item._id }}" bindtap="deletePost" src="../../images/something/index-delete.png"></image>
+            </view> -->
+          </view>
+
+          <!--内容-->
+          <view class="item-content">
+            <view class="item-content-word">{{ item.textContent }}</view>
+            <view class="item-content-image" wx:if="{{ item.uploadImgList.length>=1 }}">
+              <!--aspectFill缩放模式，保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来。-->
+              <image data-id="{{ outerIndex }}" bindtap="previewImage" wx:key="index" wx:for="{{ item.uploadImgList }}" wx:for-item="innerItem" mode="aspectFill" src="{{ innerItem }}" data-index="{{ index }}"></image>
+            </view>
+          </view>
+
+          <!--时间、评论按钮-->
+          <view class="item-footer">
+            <view class="date">{{ item.date }}</view>
+          </view>
+
+          <view class="audit-button">
+            <button hover-class="button-hover" data-id="{{ item._id }}" bindtap="noPassPost" class="no-pass-button">不通过</button>
+            <button hover-class="button-hover" data-id="{{ item._id }}" bindtap="passPost" class="pass-button">通过</button>
+          </view>
+        </view>
+
+      </view>
+
+      <view wx:if="{{ tabSelect==1 }}" class="find-container">
+        <view wx:for-item="item" wx:for-index="outerIndex" wx:for="{{ list }}" class="container-item" wx:key="index">
+          <!--头像、昵称、身份-->
+          <view class="item-header">
+            <view class="avatar-item">
+              <image class="avatar-border" src="../../images/something/border.png" />
+              <image class="user-avatar" src="{{ item.avatarCloudUrl }}" />
+              <image wx:if="{{ item.gender==1 }}" class="poster-gender" src="../../images/female.png" />
+              <image wx:if="{{ item.gender==0 }}" class="poster-gender" src="../../images/male.png" />
+            </view>
+            <view class="nickname-item">
+              <view class="nickname-top">
+                <view class="poster-nickname">{{ item.nickName }}</view>
+                <image wx:if="{{ item.roleId==1 }}" src="../../images/something/index-admin.png"></image>
+              </view>
+            </view>
+            <view class="audit-content">
+              <image wx:if="{{ item.auditCode==0 }}" class="audit-image" src="../../images/audit/check-pending.png"></image>
+              <!-- <image wx:if="{{ item.auditCode==1 }}" class="audit-image" src="../../images/audit/pass.png"></image>
+              <image wx:if="{{ item.auditCode==2 }}" class="audit-image" src="../../images/audit/no-pass.png"></image> -->
+            </view>
+            <!-- <view class="icon-item">
+              <image data-id="{{ item._id }}" bindtap="deletePost" src="../../images/something/index-delete.png"></image>
+            </view> -->
+          </view>
+
+          <!--内容-->
+          <view class="item-content">
+            <view class="">
+              <text style="font-size:45rpx;">物品：{{ item.goodsClass }}</text>
+            </view>
+            <view class="">
+              <text style="font-size:40rpx;">时间：{{ item.goodsDate }}</text>
+            </view>
+            <view class="">
+              <text style="font-size:35rpx;">地点：{{ item.goodsPlace }}</text>
+            </view>
+            <view class="">
+              <text>{{ item.textContent }}</text>
+            </view>
+            <view class="item-content-image">
+              <!--aspectFill缩放模式，保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来。-->
+              <image data-id="{{ outerIndex }}" data-index="{{ index }}" wx:for-item="innerItem" wx:for-index="index" wx:for="{{ item.uploadImgList }}" mode="aspectFill" src="{{ innerItem }}" bindtap='previewImage' wx:key="index"></image>
+            </view>
+          </view>
+
+          <!-- 时间、联系方式 -->
+          <view class="item-footer">
+            <view class="date">{{ item.date }}</view>
+            <!-- <view class="letter-icon">
+              <image wx:if="{{ item.phone.length!=0 }}" data-value="{{ item.phone }}" bindtap="copyPhone" src="../../images/find/phone.png"></image>
+              <image wx:else="" src="../../images/find/phone-null.png"></image>
+            </view>
+            <view class="letter-icon">
+              <image wx:if="{{ item.qq.length!=0 }}" data-value="{{ item.qq }}" bindtap="copyQQ" src="../../images/find/qiuqiu.png"></image>
+              <image wx:else="" src="../../images/find/qiuqiu-null.png"></image>
+            </view>
+            <view class="letter-icon">
+              <image wx:if="{{ item.wechat.length!=0 }}" data-value="{{ item.wechat }}" bindtap="copyWechat" src="../../images/find/wechat.png"></image>
+              <image wx:else="" src="../../images/find/wechat-null.png"></image>
+            </view> -->
+          </view>
+
+          <view class="audit-button">
+            <button hover-class="button-hover" data-id="{{ item._id }}" bindtap="noPassPost" class="no-pass-button">不通过</button>
+            <button hover-class="button-hover" data-id="{{ item._id }}" bindtap="passPost" class="pass-button">通过</button>
+          </view>
+
+        </view>
+      </view>
+
+      <view wx:if="{{tabSelect==2}}" class="partner-container">
+        <view class='container'>
+          <view class='content'>
+            <view class='content-left'>
+              <block wx:if="{{ index%2==0 }}" wx:for="{{ list }}" wx:key="index">
+                <view class='item'>
+                  <image data-id="{{ index }}" bindtap="openPartnerDetail" class='main-pic' mode='widthFix' src="{{ item.uploadImgList[0] }}"></image>
+                  <view class='footer'>
+                    <view data-id="{{ index }}" bindtap="openPartnerDetail" class='footer-item'>
+                      <view class='user-info'>
+                        <image class='icon avatar' src="{{ item.avatarCloudUrl }}"></image>
+                        <image class="left-avatar-border" src="../../images/something/border.png"></image>
+                        <image wx:if="{{ item.gender==0 }}" class="gender-icon" src="../../images/male.png" />
+                        <image wx:if="{{ item.gender==1 }}" class="gender-icon" src="../../images/female.png" />
+                        <view class="user-name">{{ item.nickName}} </view>
+                      </view>
+                      <view class="taContent">{{ item.taContent }}</view>
+                    </view>
+                    <view style="justify-content: left;" class='delete-icon'>
+                      <view style="margin-left: 12rpx;" class="date">{{ item.date }}</view>
+                    </view>
+                  </view>
+                  <view style="width: 100%;" class="audit-button">
+                    <button hover-class="button-hover" style="font-size: 24rpx;" data-id="{{ item._id }}" bindtap="noPassPost" class="no-pass-button">不通过</button>
+                    <button hover-class="button-hover" style="font-size: 24rpx;" data-id="{{ item._id }}" bindtap="passPost" class="pass-button">通过</button>
+                  </view>
+                </view>
+              </block>
+            </view>
+
+            <view class='content-right'>
+              <block wx:for="{{ list }}" wx:key="index">
+                <view wx:if="{{ index%2==1 }}" class='item'>
+                  <image data-id="{{ index }}" bindtap="openPartnerDetail" class='main-pic' src="{{ item.uploadImgList[0] }}"></image>
+                  <view class='footer'>
+                    <view data-id="{{ index }}" bindtap="openPartnerDetail" class='footer-item'>
+                      <view class='user-info'>
+                        <image class='icon avatar' style='width: 40rpx;' src="{{ item.avatarCloudUrl }}"></image>
+                        <image class="right-avatar-border" src="../../images/something/border.png"></image>
+                        <image wx:if="{{ item.gender==0 }}" class="gender-icon" src="../../images/male.png" />
+                        <image wx:if="{{ item.gender==1 }}" class="gender-icon" src="../../images/female.png" />
+                        <view class="user-name">{{ item.nickName }}</view>
+                      </view>
+                      <view class="taContent">{{ item.taContent }}</view>
+                      <view style="justify-content: left;" class='delete-icon'>
+                        <view class="date">{{ item.date }}</view>
+                      </view>
+                    </view>
+                  </view>
+                  <view style="width: 100%;" class="audit-button">
+                    <button hover-class="button-hover" style="font-size: 24rpx;" data-id="{{ item._id }}" bindtap="noPassPost" class="no-pass-button">不通过</button>
+                    <button hover-class="button-hover" style="font-size: 24rpx;" data-id="{{ item._id }}" bindtap="passPost" class="pass-button">通过</button>
+                  </view>
+                </view>
+              </block>
+            </view>
+
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <get-more wx:if="{{ getMore }}"></get-more>
+  <no-more wx:if="{{ noMore }}"></no-more>
+</view>

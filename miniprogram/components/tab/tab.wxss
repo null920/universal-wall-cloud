@@ -1,0 +1,35 @@
+/* components/tab/tab.wxss */
+.tab {
+  height: 84rpx;
+  display: flex;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0px 0px 20rpx 0px rgba(203, 203, 203, 0.5);
+  z-index: 1000;
+}
+
+.tab-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 0;
+  position: relative;
+  border-radius: 30%;
+}
+
+.tab-line {
+  position: absolute;
+  width: 60rpx;
+  height: 0;
+  border: 5rpx solid #ff9a02;
+  border-radius: 25%;
+  bottom: 10%;
+}
+.toTop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+}

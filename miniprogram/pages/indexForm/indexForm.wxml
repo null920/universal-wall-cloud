@@ -1,0 +1,34 @@
+<!--pages/indexForm/indexForm.wxml-->
+<view class="form-container">
+  <view class="form">
+    <!-- 文字输入框 -->
+    <textarea value="{{ textContent }}" maxlength="1024" class='textarea-content' placeholder="有啥事儿就写下来吧" show-confirm-bar="{{false}}" bindinput="getTextContent"></textarea>
+
+    <!-- 发布类型选择框 -->
+    <radio-group class="radio-group" bindchange="getRadioValue">
+      <label class="radio-label" wx:for="{{tabList}}" wx:key="index">
+        <radio value="{{ index }}" checked="{{ radioValue==index }}" />
+        <view>{{item.tabName}}</view>
+      </label>
+    </radio-group>
+
+    <view class='image-form'>
+      <view class="image-top">
+        <text>目前仅且只允许最多上传6张照片</text>
+        <text>{{imgList.length}}/6</text>
+      </view>
+      <view class="select-image">
+        <view class="img-list" wx:for="{{ imgList }}" wx:key="index">
+          <image bindtap="previewImage" data-id="{{ item }}" mode="aspectFill" class="pre-img" src="{{ item }}"></image>
+          <image bindtap="deleteImg" data-index="{{index}}" class="delete-icon" src="../../images/form/delete.png"></image>
+        </view>
+        <image wx:if="{{imgList.length<6}}" bindtap="uploadImg" class="upload-image" src="../../images/form/select-image.png" />
+      </view>
+    </view>
+  </view>
+
+  <view class='button-container'>
+    <button bindtap="submitForm" hover-class="button-hover" class="login-button">提交审核</button>
+  </view>
+
+</view>

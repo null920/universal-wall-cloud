@@ -1,0 +1,239 @@
+/* pages/partner/partner.wxss */
+.partner-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.totop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 500;
+}
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100rpx;
+}
+
+.container .content {
+  width: 96%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 20rpx;
+}
+
+.content .content-left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.content .content-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.content .item {
+  width: 93%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 25rpx;
+  background: #ffffff;
+  border: 2rpx solid #303030;
+  border-radius: 12rpx 12rpx 18rpx 18rpx;
+  box-shadow: 0px 0px 10rpx 0px rgba(0, 0, 0, 0.2);
+}
+
+.item .main-pic {
+  width: 100%;
+  border-top-left-radius: 12rpx;
+  border-top-right-radius: 12rpx;
+}
+
+.content .footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10rpx;
+  background: white;
+  border-bottom-left-radius: 12rpx;
+  border-bottom-right-radius: 12rpx;
+}
+
+.footer .footer-item {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  font-size: 25rpx;
+  color: gray;
+  justify-content: space-between;
+}
+
+.footer-item .user-info {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 70%;
+  position: relative;
+  justify-content: flex-start;
+}
+
+.user-info .gender-icon {
+  width: 20rpx;
+  height: 18rpx;
+  position: absolute;
+  z-index: 100;
+  top: 18rpx;
+  left: 3rpx;
+}
+
+.footer .icon {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 10rpx;
+}
+
+.user-name {
+  width: 100rpx;
+  font-size: 20rpx;
+  font-family: SF Pro Text, SF Pro Text-Bold;
+  font-weight: 700;
+  text-align: LEFT;
+  color: #303030;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: -15rpx;
+}
+
+.footer .delete-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 100%;
+  line-height: 20px;
+}
+
+.delete-icon .delete-img {
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 10rpx;
+}
+.delete-icon .date {
+  width: 84%;
+  font-size: 20rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #303030;
+  padding-left: 9rpx;
+}
+.footer .avatar {
+  margin-left: 10rpx;
+  position: relative;
+  z-index: 100;
+  top: -10rpx;
+  border: 2rpx solid #303030;
+}
+
+.left-avatar-border {
+  width: 25rpx;
+  height: 25rpx;
+  position: relative;
+  z-index: 200;
+  left: -48rpx;
+  top: -17rpx;
+}
+
+.taContent {
+  width: 100%;
+  font-size: 25rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 600;
+  text-align: LEFT;
+  color: #303030;
+  line-height: 30rpx;
+}
+
+.right-avatar-border {
+  width: 25rpx;
+  height: 25rpx;
+  position: relative;
+  z-index: 200;
+  left: -48rpx;
+  top: -17rpx;
+}
+
+.message-tip {
+  width: 250rpx;
+  height: 70rpx;
+  position: fixed;
+  z-index: 500;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(134deg, #ffd73b 0%, #fbc346 100%);
+  border-radius: 60rpx;
+  box-shadow: 0px 0px 8rpx 2rpx rgba(247, 171, 30, 0.81);
+  left: 25rpx;
+  bottom: 50rpx;
+}
+
+.message-tip .tip-content {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  font-size: 25rpx;
+  font-family: OPPOSans, OPPOSans-Medium;
+  font-weight: 600;
+  color: #ff3222;
+}
+
+.tip-content image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.post-container {
+  position: fixed;
+  right: 18rpx;
+  bottom: 20rpx;
+  z-index: 100;
+  width: 120prx;
+  height: 120prx;
+}
+
+.post-container .wall {
+  position: absolute;
+  z-index: 105;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  background: white;
+  right: 13rpx;
+  bottom: 30rpx;
+}
+
+.post image {
+  width: 120rpx;
+  height: 120rpx;
+  position: relative;
+  z-index: 110;
+}

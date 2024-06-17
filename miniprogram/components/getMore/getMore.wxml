@@ -1,0 +1,7 @@
+<!--components/getMore/getMore.wxml-->
+<view class='get-more'>
+  <view class='get-more-item'>
+    <image class="loading-img" src='../../images/get-more.gif' mode='aspectFit'></image>
+    <view class='loading'>加载中</view>
+  </view>
+</view>

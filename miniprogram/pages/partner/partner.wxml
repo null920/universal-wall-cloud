@@ -1,0 +1,70 @@
+<!--pages/partner/partner.wxml-->
+<view class="partner-container">
+  <!-- 导航栏 -->
+  <tab class="totop" tabList="{{ tabList }}" bindgetTabSelect="getTabSelect"></tab>
+
+  <view wx:if="{{ show }}" class='container'>
+    <view class='content'>
+      <view class='content-left'>
+        <block wx:if="{{ index%2==0 }}" wx:for="{{ list }}" wx:key="index">
+          <view class='item'>
+            <image data-id="{{index}}" bindtap="openPartnerDetail" class='main-pic' mode='widthFix' src="{{ item.uploadImgList[0] }}"></image>
+            <view class='footer'>
+              <view data-id="{{index}}" bindtap="openPartnerDetail" class='footer-item'>
+                <view class='user-info'>
+                  <image class='icon avatar' src="{{ item.avatarCloudUrl }}"></image>
+                  <image class="left-avatar-border" src="../../images/something/border.png"></image>
+                  <image wx:if="{{ item.gender==0 }}" class="gender-icon" src="../../images/male.png" />
+                  <image wx:if="{{ item.gender==1 }}" class="gender-icon" src="../../images/female.png" />
+                  <view class="user-name">{{ item.nickName }}</view>
+                </view>
+                <view class="taContent">{{ item.taContent }}</view>
+              </view>
+              <view class='delete-icon'>
+                <view class="date">{{ item.date }}</view>
+                <image data-id="{{ item._id }}" bindtap="deletePost" wx:if="{{ item._openid==openid }}" class="delete-img" src="../../images/something/index-delete.png"></image>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+
+      <view class='content-right'>
+        <block wx:for="{{ list }}" wx:key="index">
+          <view wx:if="{{ index%2==1 }}" class='item'>
+            <image data-id="{{index}}" bindtap="openPartnerDetail" mode='widthFix' class='main-pic' src="{{ item.uploadImgList[0] }}"></image>
+            <view class='footer'>
+              <view data-id="{{index}}" bindtap="openPartnerDetail" class='footer-item'>
+                <view class='user-info'>
+                  <image class='icon avatar' style='width: 40rpx;' src="{{ item.avatarCloudUrl }}"></image>
+                  <image class="right-avatar-border" src="../../images/something/border.png"></image>
+                  <image wx:if="{{ item.gender==0 }}" class="gender-icon" src="../../images/male.png" />
+                  <image wx:if="{{ item.gender==1 }}" class="gender-icon" src="../../images/female.png" />
+                  <view class="user-name">{{ item.nickName }}</view>
+                </view>
+                <view class="taContent">{{ item.taContent }}</view>
+              </view>
+              <view class='delete-icon'>
+                <view class="date">{{ item.date }}</view>
+                <image data-id="{{ item._id }}" wx:if="{{ item._openid==openid }}" bindtap="deletePost" class="delete-img" src="../../images/something/index-delete.png"></image>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+  </view>
+
+  <get-more wx:if="{{ getMore }}"></get-more>
+  <no-more wx:if="{{ noMore }}"></no-more>
+</view>
+
+
+<view class='post-container'>
+  <view class='wall'></view>
+  <view class='post'>
+    <image bindtap="openPartnerForm" src="../../images/something/index-poster.png"></image>
+  </view>
+
+</view>

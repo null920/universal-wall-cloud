@@ -1,0 +1,7 @@
+<!--components/tab/tab.wxml-->
+<view class="tab {{scrollTop>bannerHeight ?'toTop':''}}">
+  <view class="tab-item" wx:for="{{ tabList }}" wx:key="index" bindtap="selectTab" data-id="{{ index }}">
+    <text>{{ item }}</text>
+    <view wx:if="{{ tabSelect === index }}" class="tab-line"> </view>
+  </view>
+</view>

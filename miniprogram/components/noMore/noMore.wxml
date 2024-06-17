@@ -1,0 +1,4 @@
+<!--components/noMore/noMore.wxml-->
+<view class='no-more-data'>
+  <view>------到底喽------</view>
+</view>
